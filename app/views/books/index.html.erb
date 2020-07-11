@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Books</h1>
+<%= link_to Book.human_attribute_name(:newbook), new_book_path %>
 
 <table>
   <thead>
@@ -29,5 +30,4 @@
 </table>
 
 <br>
-
-<%= link_to Book.human_attribute_name(:newbook), new_book_path %>
+<%= paginate @books %>
