@@ -16,31 +16,18 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: t(:create) }
-      else
-        format.html { render :new }
-      end
-    end
+    @book.save
+    redirect_to @book, notice: t(:create)
   end
 
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: t(:update) }
-      else
-        format.html { render :edit }
-      end
-    end
+    @book.update(book_params)
+    redirect_to @book, notice: t(:update)
   end
 
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: t(:destroy)  }
-    end
+    redirect_to books_url, notice: t(:destroy)
   end
 
   private
