@@ -24,7 +24,7 @@
       <td><%= link_to Book.human_attribute_name(:show), book %></td>
       <td><%= link_to Book.human_attribute_name(:edit), edit_book_path(book) %></td>
       <td>
-        <%= link_to Book.human_attribute_name(:destroy), book, method: :delete, data: { confirm: t(:confirmtion) } %>
+        <%= link_to Book.human_attribute_name(:destroy), book, method: :delete, data: { confirm: t(:confirmation) } %>
       </td>
     </tr>
     <% end %>
