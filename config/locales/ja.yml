@@ -23,6 +23,7 @@ ja:
   create: 作成しました。
   update: 更新しました。
   destroy: 削除しました。
+  confirmtion: よろしいですか?
   date:
     abbr_day_names:
     - 日
