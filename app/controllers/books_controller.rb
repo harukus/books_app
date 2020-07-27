@@ -1,19 +1,17 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: %i[show edit update destroy]
 
   def index
     @books = Book.page(params[:page])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @book = Book.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @book = Book.new(book_params)
@@ -40,16 +38,15 @@ class BooksController < ApplicationController
     end
   end
 
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def book_params
-      params.require(:book).permit(:title, :memo, :author, :picture)
-    end
+  # Only allow a list of trusted parameters through.
+  def book_params
+    params.require(:book).permit(:title, :memo, :author, :picture)
+  end
 end
