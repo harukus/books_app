@@ -7,6 +7,21 @@ ja:
       already_confirmed: "was already confirmed"
       not_locked: "は凍結されていません"
       not_locked: "was not locked"
+  Top: "トップ"
+  Profile: "プロフィール"
+  Edit_profile: "編集"
+  Logout: "ログアウト"
+  Sign_up: "サインアップ"
+  Login: "ログイン"
+  email: "Email"
+  postcode: "郵便番号"
+  address: "住所"
+  biography: "自己紹介"
+  password: "パスワード"
+  Cancel_my_account: "アカウント削除"
+  Update: "更新する"
+  password_confirmation: "確認用のパスワード"
+  current_password: "現在のパスワード"
 
   devise:
     failure:
