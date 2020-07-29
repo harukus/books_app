@@ -22,6 +22,8 @@ ja:
   Update: "更新する"
   password_confirmation: "確認用のパスワード"
   current_password: "現在のパスワード"
+  Forgot_your_password: "パスワードをお忘れですか？"
+  remember_me: "パスワードを保存しますか"
 
   devise:
     failure:
