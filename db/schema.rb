@@ -9,8 +9,7 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20_200_712_054_921) do
+ActiveRecord::Schema.define(version: 20_200_730_215_326) do
   create_table 'books', force: :cascade do |t|
     t.string 'title'
     t.text 'memo'
@@ -18,6 +17,15 @@ ActiveRecord::Schema.define(version: 20_200_712_054_921) do
     t.datetime 'updated_at', precision: 6, null: false
     t.string 'author'
     t.string 'picture'
+  end
+
+  create_table 'git_users', force: :cascade do |t|
+    t.string 'provider', null: false
+    t.string 'uid', null: false
+    t.string 'name', null: false
+    t.string 'image_url', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
   create_table 'users', force: :cascade do |t|
