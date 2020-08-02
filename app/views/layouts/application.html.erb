@@ -23,7 +23,11 @@
     <%= link_to t(:Login), new_user_session_path, class: 'navbar-link'  %>
     <% end %>
   </p>
-
+  <% if logged_in?%>
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+  <% else %>
+  <%= link_to "GitHubでログイン", "/auth/github", method: :post %>
+  <% end %>
   <%= yield %>
 </body>
 
