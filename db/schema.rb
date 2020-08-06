@@ -19,15 +19,6 @@ ActiveRecord::Schema.define(version: 20_200_801_073_118) do
     t.string 'picture'
   end
 
-  create_table 'git_users', force: :cascade do |t|
-    t.string 'provider', null: false
-    t.string 'uid', null: false
-    t.string 'name', null: false
-    t.string 'image_url', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-  end
-
   create_table 'users', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
