@@ -24,7 +24,8 @@ ja:
   current_password: "現在のパスワード"
   Forgot_your_password: "パスワードをお忘れですか？"
   remember_me: "パスワードを保存しますか"
-
+  sign_in_with_github: "GitHubでログイン"
+  succsess_sign_in_with_github: "GitHubでログインしました"
   devise:
     failure:
       unauthenticated: 'ログインしてください。'

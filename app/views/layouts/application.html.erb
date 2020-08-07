@@ -13,7 +13,8 @@
 <body>
   <p class="navbar-text pull-right">
     <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
+    Logged in as <strong><%= current_user_name %></strong>.
+
     <%= link_to t(:Top), books_path, class: 'navbar-link'%>
     <%= link_to t(:Profile), user_path(current_user), class: 'navbar-link' %>
     <%= link_to t(:Edit_profile), edit_user_registration_path, class: 'navbar-link' %> |
@@ -21,11 +22,11 @@
     <% else %>
     <%= link_to t(:Sign_up), new_user_registration_path, class: 'navbar-link'  %> |
     <%= link_to t(:Login), new_user_session_path, class: 'navbar-link'  %>
-    <%= link_to "GitHubでログイン", user_github_omniauth_authorize_path,class: 'navbar-link', method: :post %>
+    <%= link_to t(:sign_in_with_github), user_github_omniauth_authorize_path,class: 'navbar-link', method: :post %>
     <% end %>
   </p>
   <% if logged_in?%>
-  <%= link_to "ログアウト", logout_path, method: :delete %>
+  <%= link_to t(:Logout), logout_path, method: :delete %>
   <% end %>
   <%= yield %>
 </body>
