@@ -12,7 +12,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = User.find_for_oauth(request.env['omniauth.auth'])
 
-    p "ここ#{@user.name}"
     if @user.persisted?
       flash[:notice] = t(:succsess_sign_in_with_github)
       sign_in_and_redirect @user, event: :authentication

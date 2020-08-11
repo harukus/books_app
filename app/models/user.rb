@@ -9,15 +9,21 @@ class User < ApplicationRecord
 
     user ||= User.create(
       uid: auth.uid,
-      provider: auth.provider,
-      email: User.dummy_email(auth),
-      password: Devise.friendly_token[0, 20]
+      provider: auth.provider
     )
 
     user
   end
 
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    clean_up_passwords
+    update_attributes(params, *options)
   end
 end
