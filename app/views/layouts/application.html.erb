@@ -13,7 +13,7 @@
 <body>
   <p class="navbar-text pull-right">
     <% if user_signed_in? %>
-    Logged in as <strong><%= current_user_name %></strong>.
+    Logged in as <strong><%= current_user.name %></strong>.
 
     <%= link_to t(:Top), books_path, class: 'navbar-link'%>
     <%= link_to t(:Profile), user_path(current_user), class: 'navbar-link' %>

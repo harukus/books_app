@@ -15,11 +15,11 @@
   <%= @book.author %>
 </p>
 
-
 <p>
-  <strong>Picture:</strong>
-  <%= image_tag(@book.picture_url) if @book.picture.present? %>
+  <strong>Image:</strong>
+  <%= image_tag(@book.image) if @book.image.attached? %>
 </p>
+
 
 <%= link_to Book.human_attribute_name(:edit), edit_book_path(@book) %> |
 <%= link_to Book.human_attribute_name(:back), books_path %>

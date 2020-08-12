@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user_name
 
   private
-
   def after_sign_in_path_for(_resource)
     books_path
   end
