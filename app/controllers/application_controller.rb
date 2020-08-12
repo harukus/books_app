@@ -17,10 +17,6 @@ class ApplicationController < ActionController::Base
     !!session[:user_id]
   end
 
-  def current_user_name
-    current_user.name.present? ? current_user.name : current_user.email
-  end
-
   protected
 
   def configure_permitted_parameters
