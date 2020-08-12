@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user_name
 
   private
+
   def after_sign_in_path_for(_resource)
     books_path
   end
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!session[:user_id]
+  end
+
+  def current_user_name
+    current_user.name.present? ? current_user.name : current_user.email
   end
 
   protected
