@@ -3,4 +3,4 @@
 <p><%= t(:postcode)%> : <%= @user.postcode %></p>
 <p><%= t(:address)%> : <%= @user.address %></p>
 <p><%= t(:biography)%> : <%= @user.biography %></p>
-<br>
+<p><%= t(:image)%> : <%= image_tag(@user.image) if @user.image.attached? %>
