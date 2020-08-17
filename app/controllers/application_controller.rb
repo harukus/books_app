@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  helper_method :logged_in?, :current_user_name
 
   private
 
@@ -10,6 +11,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(_resource)
     new_user_session_path
+  end
+
+  def logged_in?
+    !!session[:user_id]
+  end
+
+  def current_user_name
+    current_user.name.present? ? current_user.name : current_user.email
   end
 
   protected
