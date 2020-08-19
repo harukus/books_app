@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+  has_many :books
   has_one_attached :image
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
@@ -42,5 +43,9 @@ class User < ApplicationRecord
   # フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
+  end
+
+  def name_or_email
+    name.present? ? name : email
   end
 end
