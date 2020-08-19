@@ -2,7 +2,9 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @books = Book.page(params[:page])
+    @user = User.find(current_user.id)
+    @follow_users = @user.following_user.ids.push(@current_user.id)
+    @books = Book.where(user_id: @follow_users).page(params[:page])
   end
 
   def show
