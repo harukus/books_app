@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
   root to: 'books#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   resources :books
