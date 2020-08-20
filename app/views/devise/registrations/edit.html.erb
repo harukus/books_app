@@ -41,6 +41,11 @@
   <%= f.text_area :biography, autofocus: true, autocomplete: "biography" %>
 </div>
 
+<div class="field">
+  <%= f.label :image, t(:image) %><br />
+  <%= f.file_field :image %>
+</div>
+
 <div class="actions">
   <%= f.submit t(:Update) %>
 </div>
