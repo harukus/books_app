@@ -5,10 +5,12 @@
     <% @users.each do |user| %>
     <li>
         <%= link_to user_name(user), user %>
+        <% unless current_user.id == user.id%>
         <% if current_user.following?(user) %>
         <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
         <% else %>
         <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <% end %>
         <% end %>
     </li>
     <% end %>
