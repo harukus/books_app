@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Reports</h1>
-
+<h1>日報</h1>
+<%= link_to Report.human_attribute_name(:newreport), new_report_path %>
 <table>
   <thead>
     <tr>
@@ -27,5 +27,3 @@
 </table>
 
 <br>
-
-<%= link_to Report.human_attribute_name(:newreport), new_report_path %>
