@@ -21,6 +21,16 @@ ja:
         destroy: 削除
         newbook: 新規作成
         back: 戻る
+        models:
+      report:
+        title: タイトル
+        content: 内容
+        post_by: 投稿者
+        show: 詳細
+        edit: 編集
+        destroy: 削除
+        newreport: 新規作成
+        back: 戻る
   create: 作成しました。
   update: 更新しました。
   destroy: 削除しました。
