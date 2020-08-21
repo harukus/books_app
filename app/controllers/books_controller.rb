@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    user = User.find_by(id: @book.user_id)
+    user = User.find(@book.user_id)
   end
 
   def new
