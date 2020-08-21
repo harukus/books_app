@@ -2,13 +2,13 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @user = User.find(current_user.id)
-    @follow_users = @user.following_user.ids.push(@current_user.id)
-    @books = Book.where(user_id: @follow_users).page(params[:page])
+    user = User.find(current_user.id)
+    follow_users = user.following_user.ids.push(current_user.id)
+    @books = Book.where(user_id: follow_users).page(params[:page])
   end
 
   def show
-    @user = User.find_by(id: @book.user_id)
+    user = User.find_by(id: @book.user_id)
   end
 
   def new
