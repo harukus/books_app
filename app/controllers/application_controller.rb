@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :logged_in?, :current_user_name, :user_name
+  helper_method :logged_in?, :current_user_name_or_email, :user_name_or_email
 
   private
 
@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
     !!session[:user_id]
   end
 
-  def current_user_name
+  def current_user_name_or_email
     current_user.name.present? ? current_user.name : current_user.email
   end
 
-  def user_name(user)
+  def user_name_or_email(user)
     user.name.present? ? user.name : user.email
   end
 
