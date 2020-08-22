@@ -1,17 +1,16 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
-
 <ul class="users">
-    <% @users.each do |user| %>
+  <% @users.each do |user| %>
     <li>
-        <%= link_to user_name_or_email(user), user %>
-        <% unless current_user.id == user.id%>
+      <%= link_to user_name_or_email(user), user %>
+      <% unless current_user.id == user.id%>
         <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
         <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
         <% end %>
-        <% end %>
+      <% end %>
     </li>
-    <% end %>
+  <% end %>
 </ul>
