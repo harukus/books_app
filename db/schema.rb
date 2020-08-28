@@ -44,25 +44,9 @@ ActiveRecord::Schema.define(version: 2020_08_27_070208) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "git_users", force: :cascade do |t|
-    t.string "provider", null: false
-    t.string "uid", null: false
-    t.string "name", null: false
-    t.string "image_url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
