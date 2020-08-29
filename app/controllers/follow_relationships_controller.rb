@@ -1,4 +1,4 @@
-class RelationshipsController < ApplicationController
+class FollowRelationshipsController < ApplicationController
   def follow
     current_user.follow(params[:id])
     redirect_to users_path

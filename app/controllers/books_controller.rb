@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     user = User.find(current_user.id)
-    follow_users = user.following_user.ids.push(current_user.id)
+    follow_users = user.following_ids.push(current_user.id)
     @books = Book.where(user_id: follow_users).page(params[:page])
   end
 

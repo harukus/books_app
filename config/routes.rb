@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[show index]
   get '/auth/:provider/callback' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
-  post 'follow/:id' => 'relationships#follow', as: 'follow'
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  post 'follow/:id' => 'follow_relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'follow_relationships#unfollow', as: 'unfollow'
 end

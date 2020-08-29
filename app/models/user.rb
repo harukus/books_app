@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
-  has_many :following_user, through: :follower, source: :followed
-  has_many :follower_user, through: :followed, source: :follower
+  has_many :following_relationships, foreign_key: 'follower_id', class_name: 'FollowRelationship', dependent: :destroy
+  has_many :followings, through: :following_relationships
+  has_many :follower_relationships, foreign_key: 'following_id', class_name: 'FollowRelationship', dependent: :destroy
+  has_many :followers, through: :follower_relationships
+
   has_many :books
   has_one_attached :image
   devise :database_authenticatable, :registerable,
@@ -10,8 +11,7 @@ class User < ApplicationRecord
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-
-    user ||= User.create!(
+    user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,
       email: auth.info.email,
@@ -33,15 +33,15 @@ class User < ApplicationRecord
   end
 
   def follow(user_id)
-    follower.create(followed_id: user_id)
+    following_relationships.create(following_id: user_id)
   end
 
   def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+    following_relationships.find_by(following_id: user_id).destroy
   end
 
   def following?(user)
-    following_user.include?(user)
+    followings.include?(user)
   end
 
   def name_or_email
