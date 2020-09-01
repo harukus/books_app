@@ -3,15 +3,15 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to @comment, notice: t(:create)
+      redirect_back(fallback_location: root_path)
     else
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
 
   private
 
   def comment_params
-    params.require(:coment).permit(:content)
+    params.require(:comment).permit(:content, :commentable_type, :commentable_id)
   end
 end

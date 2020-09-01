@@ -7,7 +7,10 @@ class ReportsController < ApplicationController
     @reports = Report.where(user_id: follow_users).page(params[:page])
   end
 
-  def show; end
+  def show
+    @comment = @report.comments.new
+    @comments = @report.comments
+  end
 
   def new
     @report = Report.new
@@ -35,7 +38,7 @@ class ReportsController < ApplicationController
 
   def destroy
     if @report.destroy
-      redirect_to report_url, notice: t(:destroy)
+      redirect_to reports_url, notice: t(:destroy)
     else
       render :show
     end

@@ -10,5 +10,22 @@
   <%= @report.content %>
 </p>
 
+<h2>コメント一覧</h2>
+<% @report.comments.each do |c| %>
+<div>
+  <%= c.user %>
+  <%= c.content %>
+  <hr>
+</div>
+<% end %>
+
+<%= form_for [@report, @comment] do |f| %>
+<%= f.hidden_field :commentable_type, value: @comment.commentable_type %>
+<%= f.hidden_field :commentable_id, value: @comment.commentable_id %>
+<%= f.text_area :content %>
+<br>
+<%= f.submit 'コメントする' %>
+<% end %>
+
 <%= link_to Report.human_attribute_name(:edit), edit_report_path(@report) %> |
 <%= link_to Report.human_attribute_name(:back), reports_path %>
