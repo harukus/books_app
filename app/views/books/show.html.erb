@@ -11,5 +11,22 @@
   <strong>Author:</strong>
   <%= @book.author %>
 </p>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+<div>
+  <%= c.user.email %>
+  <%= c.content %>
+  <%= link_to "編集", edit_book_comment_path(@book, c)%> |
+  <hr>
+</div>
+<% end %>
+<%= form_for [@book, @comment] do |f| %>
+<%= f.hidden_field :commentable_type, value: @comment.commentable_type %>
+<%= f.hidden_field :commentable_id, value: @comment.commentable_id %>
+<%= f.text_area :content %>
+<br>
+<%= f.submit 'コメントする' %>
+<% end %>
 <%= link_to Book.human_attribute_name(:edit), edit_book_path(@book) %> |
 <%= link_to Book.human_attribute_name(:back), books_path %>

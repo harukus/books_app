@@ -9,6 +9,8 @@ class BooksController < ApplicationController
 
   def show
     user = User.find(@book.user_id)
+    @comment = @book.comments.new
+    @comments = @book.comments.all
   end
 
   def new
