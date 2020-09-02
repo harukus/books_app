@@ -1,9 +1,9 @@
 <%= form_for(@comment, url: { controller: :comments, action: :update})do |form| %>
-<div class="field">
+  <div class="field">
     <%= form.label :content, "コメント" %>
     <%= form.text_area :content %>
-</div>
-<div class="actions">
+  </div>
+  <div class="actions">
     <%= form.submit %>
-</div>
+  </div>
 <% end %>

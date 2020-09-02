@@ -14,17 +14,17 @@
   </thead>
   <tbody>
     <% @books.each do |book| %>
-    <tr>
-      <td><%= book.title %></td>
-      <td><%= book.memo %></td>
-      <td><%= book.author %></td>
-      <td><%= book.user.name_or_email %></td>
-      <td><%= link_to Book.human_attribute_name(:show), book %></td>
-      <td><%= link_to Book.human_attribute_name(:edit), edit_book_path(book) %></td>
-      <td>
-        <%= link_to Book.human_attribute_name(:destroy), book, method: :delete, data: { confirm: t(:confirmation) } %>
-      </td>
-    </tr>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.memo %></td>
+        <td><%= book.author %></td>
+        <td><%= book.user.name_or_email %></td>
+        <td><%= link_to Book.human_attribute_name(:show), book %></td>
+        <td><%= link_to Book.human_attribute_name(:edit), edit_book_path(book) %></td>
+        <td>
+          <%= link_to Book.human_attribute_name(:destroy), book, method: :delete, data: { confirm: t(:confirmation) } %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
