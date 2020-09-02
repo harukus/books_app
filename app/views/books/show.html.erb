@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
-
 <p>
   <strong>Memo:</strong>
   <%= @book.memo %>
 </p>
-
 <p>
   <strong>Author:</strong>
   <%= @book.author %>
 </p>
-
 <%= link_to Book.human_attribute_name(:edit), edit_book_path(@book) %> |
 <%= link_to Book.human_attribute_name(:back), books_path %>

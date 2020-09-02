@@ -2,10 +2,14 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @books = Book.page(params[:page])
+    user = User.find(current_user.id)
+    follow_users = user.following_ids.push(current_user.id)
+    @books = Book.where(user_id: follow_users).page(params[:page])
   end
 
-  def show; end
+  def show
+    user = User.find(@book.user_id)
+  end
 
   def new
     @book = Book.new
@@ -15,6 +19,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save
       redirect_to @book, notice: t(:create)
     else
