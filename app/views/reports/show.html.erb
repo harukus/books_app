@@ -11,13 +11,15 @@
 </p>
 
 <h2>コメント一覧</h2>
-<% @report.comments.each do |c| %>
+<% @comments.each do |c| %>
 <div>
-  <%= c.user %>
+  <%= c.user.email %>
   <%= c.content %>
+  <%= link_to "編集", edit_report_comment_path(@report, c)%> |
   <hr>
 </div>
 <% end %>
+
 
 <%= form_for [@report, @comment] do |f| %>
 <%= f.hidden_field :commentable_type, value: @comment.commentable_type %>

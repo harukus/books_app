@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :reports do
-    resources :comments, only: [:create]
+    resources :comments, only: %i[create edit update]
   end
   root to: 'books#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
