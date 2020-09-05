@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to reports_path
+      redirect_to report_path(params[:report_id])
     else
       redirect_back(fallback_location: root_path)
     end
