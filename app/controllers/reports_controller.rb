@@ -2,8 +2,8 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
 
   def index
-    follow_users = current_user.following_ids.push(current_user.id)
-    @reports = Report.where(user_id: follow_users).page(params[:page])
+    follow_users_id = current_user.following_ids.push(current_user.id)
+    @reports = Report.where(user_id: follow_users_id).page(params[:page])
   end
 
   def show
@@ -19,7 +19,6 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-    # @report.user_id = current_user.id
     if @report.save
       redirect_to @report, notice: t(:create)
     else
