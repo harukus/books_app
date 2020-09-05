@@ -2,8 +2,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
 
   def index
-    user = User.find(current_user.id)
-    follow_users = user.following_ids.push(current_user.id)
+    follow_users = current_user.following_ids.push(current_user.id)
     @reports = Report.where(user_id: follow_users).page(params[:page])
   end
 
