@@ -18,8 +18,8 @@ class ReportsController < ApplicationController
   def edit; end
 
   def create
-    @report = Report.new(report_params)
-    @report.user_id = current_user.id
+    @report = current_user.reports.new(report_params)
+    # @report.user_id = current_user.id
     if @report.save
       redirect_to @report, notice: t(:create)
     else
