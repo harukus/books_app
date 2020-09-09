@@ -8,10 +8,15 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
+    if @resource == 'reports'
+      @report = Report.find(@commentable.id)
+    else
+      @book = Book.find(@commentable.id)
+    end
     if @comment.save
       redirect_to @commentable
     else
-      render  ### ここがわからないです。
+      render "#{@resource}/show"
     end
   end
 
@@ -27,8 +32,8 @@ class CommentsController < ApplicationController
   private
 
   def set_commentable
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
+    @resource, id = request.path.split('/')[1, 2]
+    @commentable = @resource.singularize.classify.constantize.find(id)
   end
 
   def comment_params

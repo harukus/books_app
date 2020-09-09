@@ -12,7 +12,7 @@
   <%= @book.author %>
 </p>
 <h2>コメント一覧</h2>
-<% @comments.each do |c| %>
+<% @book.comments.all.each do |c| %>
   <div>
     <%= c.user.email %>
     <%= c.content %>
@@ -21,6 +21,15 @@
   </div>
 <% end %>
 <%= form_for [@book, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div class="alert alert-warning">
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.hidden_field :commentable_type, value: @comment.commentable_type %>
   <%= f.hidden_field :commentable_id, value: @comment.commentable_id %>
   <%= f.text_area :content %>

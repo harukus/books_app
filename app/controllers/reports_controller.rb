@@ -8,7 +8,6 @@ class ReportsController < ApplicationController
 
   def show
     @comment = @report.comments.new
-    @comments = @report.comments.all
   end
 
   def new
