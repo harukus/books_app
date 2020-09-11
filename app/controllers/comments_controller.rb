@@ -13,8 +13,12 @@ class CommentsController < ApplicationController
     else
       @book = @commentable
     end
-    @comment.save
-    redirect_to @commentable, notice: 'コメントを入力してください'
+
+    if @comment.save
+      redirect_to @commentable
+    else
+      redirect_to @commentable, notice: 'コメントを入力してください'
+    end
   end
 
   def update
