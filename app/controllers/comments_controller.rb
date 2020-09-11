@@ -13,11 +13,8 @@ class CommentsController < ApplicationController
     else
       @book = @commentable
     end
-    if @comment.save
-      redirect_to @commentable
-    else
-      render "#{@resource}/show"
-    end
+    @comment.save
+    redirect_to @commentable, notice: 'コメントを入力してください'
   end
 
   def update
