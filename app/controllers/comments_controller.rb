@@ -8,12 +8,6 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
-    if @resource == 'reports'
-      @report = @commentable
-    else
-      @book = @commentable
-    end
-
     if @comment.save
       redirect_to @commentable
     else
