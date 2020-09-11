@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @resource == 'reports'
-      @report = Report.find(@commentable.id)
+      @report = @commentable
     else
-      @book = Book.find(@commentable.id)
+      @book = @commentable
     end
     if @comment.save
       redirect_to @commentable
