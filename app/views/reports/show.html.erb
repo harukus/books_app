@@ -1,26 +1,22 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Title:</strong>
-  <%= @book.title %>
+  <%= @report.title %>
 </p>
 <p>
-  <strong>Memo:</strong>
-  <%= @book.memo %>
-</p>
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
+  <strong>Content:</strong>
+  <%= @report.content %>
 </p>
 <h2>コメント一覧</h2>
-<% @book.comments.all.each do |c| %>
+<% @report.comments.all.each do |c| %>
   <div>
     <%= c.user.email %>
     <%= c.content %>
-    <%= link_to "編集", edit_book_comment_path(@book, c)%> |
+    <%= link_to "編集", edit_report_comment_path(@report, c)%> |
     <hr>
   </div>
 <% end %>
-<%= form_for [@book, @comment] do |f| %>
+<%= form_for [@report, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div class="alert alert-warning">
       <ul>
@@ -36,5 +32,5 @@
   <br>
   <%= f.submit 'コメントする' %>
 <% end %>
-<%= link_to Book.human_attribute_name(:edit), edit_book_path(@book) %> |
-<%= link_to Book.human_attribute_name(:back), books_path %>
+<%= link_to Report.human_attribute_name(:edit), edit_report_path(@report) %> |
+<%= link_to Report.human_attribute_name(:back), reports_path %>
