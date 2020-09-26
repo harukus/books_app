@@ -3,6 +3,11 @@ require 'application_system_test_case'
 class BooksTest < ApplicationSystemTestCase
   setup do
     @book = books(:one)
+
+    visit root_url
+    fill_in 'Email', with: 'bump@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_button 'ログイン'
   end
 
   test 'visiting the index' do
