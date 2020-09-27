@@ -24,7 +24,6 @@ class BooksTest < ApplicationSystemTestCase
     click_on '登録する'
 
     assert_text '作成しました。'
-    click_link '戻る'
   end
 
   test 'updating a Book' do
