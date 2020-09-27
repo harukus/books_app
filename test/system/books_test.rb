@@ -29,13 +29,13 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'updating a Book' do
     visit books_url
-    click_on '編集', match: :first
+    click_on '編集'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    fill_in 'メモ', with: @book.memo
+    fill_in 'タイトル', with: @book.title
+    click_on '更新する'
 
-    assert_text 'Book was successfully updated'
+    assert_text '更新しました。'
   end
 
   test 'destroying a Book' do
