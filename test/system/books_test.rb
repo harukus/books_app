@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    @book = books(:attack_on_titan)
 
     visit root_url
     fill_in 'Email', with: 'bump@example.com'
@@ -19,22 +19,30 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_on '新規作成'
 
-    fill_in 'メモ', with: @book.memo
-    fill_in 'タイトル', with: @book.title
+    fill_in 'タイトル', with: 'ドラゴンボーロ'
+    fill_in 'メモ', with: 'ワクワグストーリー'
+    fill_in '著者', with: '鳥森明'
     click_on '登録する'
 
     assert_text '作成しました。'
+    assert_text 'ドラゴンボーロ'
+    assert_text 'ワクワグストーリー'
+    assert_text '鳥森明'
   end
 
   test 'updating a Book' do
     visit books_url
-    click_on '編集'
+    click_link '編集'
 
-    fill_in 'メモ', with: @book.memo
-    fill_in 'タイトル', with: @book.title
+    fill_in 'タイトル', with: 'ドラゴンボール'
+    fill_in 'メモ', with: 'ワクワクストーリー'
+    fill_in '著者', with: '鳥山明'
     click_on '更新する'
 
     assert_text '更新しました。'
+    assert_text 'ドラゴンボール'
+    assert_text 'ワクワクストーリー'
+    assert_text '鳥山明'
   end
 
   test 'destroying a Book' do

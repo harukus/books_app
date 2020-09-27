@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  memo: MyText
+attack_on_titan:
+  title: 進撃の巨人
+  memo: ハラハラドキドキ
+  author: 諫山創
   user: bump
