@@ -53,4 +53,14 @@ class BooksTest < ApplicationSystemTestCase
 
     assert_text '削除しました。'
   end
+
+  test 'creating a comment' do
+    visit books_url
+    click_on '詳細'
+    fill_in 'comment[content]', with: '確かに面白い'
+    click_button 'コメントする'
+
+    assert_text 'bump@example.com'
+    assert_text '確かに面白い'
+  end
 end
