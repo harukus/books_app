@@ -7,8 +7,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'unfollow' do
-    harukus = User.create!(email: 'harukus@example.com', password: 'password')
-    bump = User.create!(email: 'bump@example.com', password: 'password')
+    harukus = users(:harukus)
+    bump = users(:bump)
 
     harukus.follow(bump.id)
     assert harukus.following?(bump)
