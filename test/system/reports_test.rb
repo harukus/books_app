@@ -43,9 +43,9 @@ class ReportsTest < ApplicationSystemTestCase
   test 'destroying a Report' do
     visit reports_url
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on '削除', match: :first
     end
 
-    assert_text 'Report was successfully destroyed'
+    assert_text '削除しました。'
   end
 end
