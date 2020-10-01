@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    # @report = reports(:one)
+    @report = reports(:one)
     visit root_url
     fill_in 'Email', with: 'bump@example.com'
     fill_in 'パスワード', with: 'password'
@@ -29,14 +29,15 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'updating a Report' do
     visit reports_url
-    click_on 'Edit', match: :first
+    click_on '編集'
 
-    fill_in 'Content', with: @report.content
-    fill_in 'Title', with: @report.title
-    click_on 'Update Report'
+    fill_in 'タイトル', with: 'Ruby超入門第１章'
+    fill_in '内容', with: 'とっても楽しく勉強できた'
+    click_on '更新する'
 
-    assert_text 'Report was successfully updated'
-    click_on 'Back'
+    assert_text '更新しました。'
+    assert_text 'Ruby超入門第１章'
+    assert_text 'とっても楽しく勉強できた'
   end
 
   test 'destroying a Report' do
