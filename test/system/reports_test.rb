@@ -16,14 +16,15 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'creating a Report' do
     visit reports_url
-    click_on 'New Report'
+    click_on '日報作成'
 
-    fill_in 'Content', with: @report.content
-    fill_in 'Title', with: @report.title
-    click_on 'Create Report'
+    fill_in 'タイトル', with: '新しいLinuxの教科書を読む'
+    fill_in '内容', with: '楽しい！'
+    click_on '登録する'
 
-    assert_text 'Report was successfully created'
-    click_on 'Back'
+    assert_text '作成しました。'
+    assert_text '新しいLinuxの教科書を読む'
+    assert_text '楽しい！'
   end
 
   test 'updating a Report' do
