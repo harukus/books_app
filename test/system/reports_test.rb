@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:one)
+    @report = reports(:ruby_nyumon)
     visit root_url
     fill_in 'Email', with: 'bump@example.com'
     fill_in 'パスワード', with: 'password'
