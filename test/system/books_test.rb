@@ -52,6 +52,7 @@ class BooksTest < ApplicationSystemTestCase
     end
 
     assert_text '削除しました。'
+    assert_no_text @book.title
   end
 
   test 'creating a comment' do
