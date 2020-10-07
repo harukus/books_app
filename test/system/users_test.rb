@@ -8,24 +8,21 @@ class UsersTest < ApplicationSystemTestCase
     click_button 'ログイン'
   end
 
-  test 'follow user' do
+  test 'follow/unfollow user' do
     visit root_path
     click_link 'ユーザー一覧'
-    assert_text 'フォローする'
+    assert_text 'harukus@example.com'
+    assert_link 'フォローする'
 
     click_link 'フォローする'
+    assert_link 'フォロー外す'
 
-    assert_text 'フォロー外す'
-  end
+    bump = users(:bump)
+    harukus = users(:harukus)
+    assert bump.following?(harukus)
 
-  test 'unfollow user' do
-    visit root_path
-    click_link 'ユーザー一覧'
-    click_link 'フォローする'
-
-    assert_text 'フォロー外す'
     click_link 'フォロー外す'
-
     assert_text 'フォローする'
+    assert_not bump.reload.following?(harukus)
   end
 end
