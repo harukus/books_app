@@ -42,10 +42,12 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'destroying a Report' do
     visit reports_url
+    assert_text 'Ruby超入門'
     page.accept_confirm do
       click_on '削除', match: :first
     end
 
     assert_text '削除しました。'
+    assert_no_text 'Ruby超入門'
   end
 end

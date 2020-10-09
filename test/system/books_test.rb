@@ -47,12 +47,13 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'destroying a Book' do
     visit books_url
+    assert_text "進撃の巨人"
     page.accept_confirm do
       click_on '削除', match: :first
     end
 
     assert_text '削除しました。'
-    assert_no_text @book.title
+    assert_no_text "進撃の巨人"
   end
 
   test 'creating a comment' do
