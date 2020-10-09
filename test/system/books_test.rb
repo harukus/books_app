@@ -43,17 +43,21 @@ class BooksTest < ApplicationSystemTestCase
     assert_text 'ドラゴンボール'
     assert_text 'ワクワクストーリー'
     assert_text '鳥山明'
+
+    assert_no_text 'ドラゴンボーロ'
+    assert_no_text 'ワクワグストーリー'
+    assert_no_text '鳥森明'
   end
 
   test 'destroying a Book' do
     visit books_url
-    assert_text "進撃の巨人"
+    assert_text '進撃の巨人'
     page.accept_confirm do
       click_on '削除', match: :first
     end
 
     assert_text '削除しました。'
-    assert_no_text "進撃の巨人"
+    assert_no_text '進撃の巨人'
   end
 
   test 'creating a comment' do

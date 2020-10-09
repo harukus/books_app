@@ -38,6 +38,9 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '更新しました。'
     assert_text 'Ruby超入門第１章'
     assert_text 'とっても楽しく勉強できた'
+
+    assert_no_text '新しいLinuxの教科書を読む'
+    assert_no_text '楽しい！'
   end
 
   test 'destroying a Report' do
