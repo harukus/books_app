@@ -1,7 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-attack_on_titan:
-  title: 進撃の巨人
-  memo: ハラハラドキドキ
-  author: 諫山創
+ruby_nyumon:
+  title: Ruby超入門
+  content: とても楽しく勉強できた
   user: bump
