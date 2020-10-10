@@ -19,19 +19,22 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_on '新規作成'
 
-    fill_in 'タイトル', with: 'ドラゴンボーロ'
-    fill_in 'メモ', with: 'ワクワグストーリー'
-    fill_in '著者', with: '鳥森明'
+    fill_in 'タイトル', with: 'ドラゴンボール'
+    fill_in 'メモ', with: 'ワクワクストーリー'
+    fill_in '著者', with: '鳥山明'
     click_on '登録する'
 
     assert_text '作成しました。'
-    assert_text 'ドラゴンボーロ'
-    assert_text 'ワクワグストーリー'
-    assert_text '鳥森明'
+    assert_text 'ドラゴンボール'
+    assert_text 'ワクワクストーリー'
+    assert_text '鳥山明'
   end
 
   test 'updating a Book' do
     visit books_url
+    assert_text '進撃の巨人'
+    assert_text 'ハラハラドキドキ'
+    assert_text '諫山創'
     click_link '編集'
 
     fill_in 'タイトル', with: 'ドラゴンボール'
@@ -43,10 +46,6 @@ class BooksTest < ApplicationSystemTestCase
     assert_text 'ドラゴンボール'
     assert_text 'ワクワクストーリー'
     assert_text '鳥山明'
-
-    assert_no_text 'ドラゴンボーロ'
-    assert_no_text 'ワクワグストーリー'
-    assert_no_text '鳥森明'
   end
 
   test 'destroying a Book' do

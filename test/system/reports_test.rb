@@ -29,8 +29,11 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'updating a Report' do
     visit reports_url
-    click_on '編集'
+    click_on '詳細'
+    assert_text 'Ruby超入門'
+    assert_text 'とても楽しく勉強できた'
 
+    click_link '編集'
     fill_in 'タイトル', with: 'Ruby超入門第１章'
     fill_in '内容', with: 'とっても楽しく勉強できた'
     click_on '更新する'
@@ -38,9 +41,6 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '更新しました。'
     assert_text 'Ruby超入門第１章'
     assert_text 'とっても楽しく勉強できた'
-
-    assert_no_text '新しいLinuxの教科書を読む'
-    assert_no_text '楽しい！'
   end
 
   test 'destroying a Report' do
